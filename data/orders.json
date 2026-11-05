@@ -1,0 +1,30 @@
+[
+  {
+    "ref": "WRLD-D3M000",
+    "createdAt": "2026-11-03T14:22:00.000Z",
+    "status": "paid",
+    "channel": "paystack",
+    "paidAt": "2026-11-03T14:25:00.000Z",
+    "currency": "NGN",
+    "buyer": { "name": "Ìfye. Demo Buyer", "email": "collector@demo.wrld", "phone": "+2348000000001", "address": "12 Demo Lane, Lagos" },
+    "lines": [
+      { "id": "og-silent-demise", "name": "SÌLENT DEMÌSE (THE ORIGINAL)", "price": 45000000, "qty": 1, "size": null, "colorway": null, "amount": 45000000 }
+    ],
+    "total": 45000000,
+    "demo": true
+  },
+  {
+    "ref": "WRLD-D3M001",
+    "createdAt": "2026-11-04T09:10:00.000Z",
+    "status": "pending",
+    "channel": "payment_link",
+    "currency": "NGN",
+    "buyer": { "name": "Ade. Demo Buyer", "email": "fan2@demo.wrld", "phone": "+2348000000002", "address": "8 Proof-of-Concept Str.t" },
+    "lines": [
+      { "id": "speling-lessons-tee", "name": "SPELING LESSONS TEE", "price": 3800000, "qty": 1, "size": "L", "colorway": "BONE / INK", "amount": 3800000 },
+      { "id": "free-bird-print", "name": "FREE BÌRD POSTER", "price": 1900000, "qty": 1, "size": "A3", "colorway": null, "amount": 1900000 }
+    ],
+    "total": 5700000,
+    "demo": true
+  }
+]

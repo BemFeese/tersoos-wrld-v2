@@ -1,0 +1,15 @@
+# dependencies & build
+node_modules/
+.next/
+out/
+
+# secrets
+.env.local
+.env*.local
+
+# runtime data: ship the demo order/commission seeds with the repo,
+# ignore the volatile subscriber list only
+data/newsletter.json
+
+.vercel
+.env*

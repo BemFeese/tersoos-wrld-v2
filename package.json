@@ -1,0 +1,16 @@
+{
+  "name": "tersoos-wrld",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TERSOO'S WRLD — the rebirth. Portfolio + WRLDSHOP for Tersoo Dzoho, graphic designer & illustrator.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
