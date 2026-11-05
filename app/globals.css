@@ -9,9 +9,9 @@
   --ink: #1c1814;
   --ink-soft: #66605a;
   --line: #e6e2da;
-  --ox: #4a0e15;        /* oxblood */
-  --ox-deep: #380a10;
-  --ox-soft: #8a4a52;
+  --ox: #9e2b25;        /* oxblood — client-red */
+  --ox-deep: #7a1f1b;
+  --ox-soft: #b2645c;
 
   --font-body: "Space Grotesk", system-ui, sans-serif;
   --font-mark: "Anton", "Arial Narrow", sans-serif;

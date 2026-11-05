@@ -12,13 +12,13 @@ designer & illustrator. Every misspelling is on purpose. That's the signature.
 ## The idea
 
 The brief was one sentence long: *let the art speak for itself.* So v2
-subtracts. Paper-white pages, oxblood `#4A0E15` as the only colour voice,
+subtracts. Paper-white pages, oxblood `#9E2B25` as the only colour voice,
 18px-rounded frames on every artwork, and nothing — no cursor theatrics, no
 grain, no marquees — standing between the visitor and a piece.
 
 | | v1 — avant-garde (`before`) | **v2 — the quiet one (`after`, this repo)** |
 |---|---|---|
-| Colour | ink black + signal orange, acid yellow | **paper white `#fbfaf7` + oxblood `#4A0E15`** |
+| Colour | ink black + signal orange, acid yellow | **paper white `#fbfaf7` + oxblood `#9E2B25`** |
 | Frames | straight, hard corners | **18px rounded** on every artwork & card |
 | Chrome | paint cursor, splatter canvas, film grain, marquees | thin sticky nav + soft fades — nothing else |
 | Bundle | 3.1 kB | **1.7 kB** — quiet is literally lighter |
