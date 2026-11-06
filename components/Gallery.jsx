@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { artworks } from "../lib/data";
+import useCatalog from "../lib/use-catalog";
 import ArtSmart from "./ArtSmart";
 import Reveal from "./Reveal";
 
@@ -57,7 +58,10 @@ function StoryModal({ piece, onClose }) {
 export default function Gallery() {
   const [story, setStory] = useState(null);
   const [speech, setSpeech] = useState("ALL");
-  const shown = artworks.filter((a) => pieceSpeaks(a, speech));
+  const cat = useCatalog();
+  // his latest posting leads the wall, then the curated pieces
+  const wall = [...(cat?.artworks || []), ...artworks];
+  const shown = wall.filter((a) => pieceSpeaks(a, speech));
 
   return (
     <section className="section" id="work">

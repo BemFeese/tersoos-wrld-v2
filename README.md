@@ -64,6 +64,15 @@ A single quiet form. Briefs land in the back office with a reference number:
 
 ![Commission page](docs/screenshots/v2-commission.jpg)
 
+### The back office
+`/admin` — gated by the key, and now **self-serve**: the **ART** tab posts a
+new work straight to the wall (image upload included, resized in the
+browser), the **SHOP** tab posts wrldshop pieces and 1/1 originals, prices
+typed in naira. Kobo maths stays server-side. Below the forms sit the
+orders, commission briefs and subscribers:
+
+![Back office — ART posting tab](docs/screenshots/v2-back-office.jpg)
+
 ---
 
 ## What it does
@@ -91,9 +100,18 @@ Certificate of Misspelling.
 **Commissions** — briefs (name, contact, type, budget band, timeline, ≥20
 characters of intent) with `CM-XXXX` references.
 
-**Back office** — `/admin` shows orders, commission briefs and the
-subscriber list. Gated by an `ADMIN_KEY` env secret. *(The key is configured
+**Back office** — `/admin` runs the site: orders, commission briefs and the
+subscriber list, plus where Tersoo posts his own art (below). Gated by an
+`ADMIN_KEY` env secret. *(The key is configured
  privately in `.env.local` / host env vars; it is never published here.)*
+
+**Self-serve posting** — he adds new art and shop pieces from the back
+office itself: the **ART** tab posts to the works wall, the **SHOP** tab
+posts to the wrldshop or the 1/1 gallery. Image files are downscaled in the
+browser before they ride into the posting ledger — no blob storage, no
+separate media host, nothing else to set up. (On a Node host postings
+persist on disk in `data/catalog.json`; on serverless instances they live
+in instance memory — connect a DB when permanence there matters.)
 
 **Newsletter** — a one-field subscription, counted in the back office.
 
@@ -101,13 +119,20 @@ subscriber list. Gated by an `ADMIN_KEY` env secret. *(The key is configured
 
 ## How Tersoo manages it (no code, ever)
 
-1. **Add an artwork** → drop the file into `public/art/` with the exact
-   filename already listed in `lib/data.js` (e.g. `/art/crule-wrld.jpg`).
-   It appears instantly. Until then, a quiet paper stand-in holds the slot.
-2. **Change everything else** — works, stories, products, prices, stock,
+1. **Post art from the back office** → open `/admin`, enter the key, and
+   post from the **ART** tab (title, year, tags, the story behind it and an
+   image) or the **SHOP** tab (a wrldshop piece or a 1/1 original, price in
+   naira — the kobo maths is handled). Postings lead the works wall / shop
+   shelf the moment they land, and can be taken down again with one button.
+2. **Add an artwork the quiet, source-level way** → drop the file into
+   `public/art/` with the exact filename already listed in `lib/data.js`
+   (e.g. `/art/crule-wrld.jpg`). It appears instantly. Until then, a quiet
+   paper stand-in holds the slot.
+3. **Change everything else** — works, stories, products, prices, stock,
    edition notes, socials — it all lives in **`lib/data.js`**, plainly
    commented at the top.
-3. **Sell an original** → the 1/1 list is under `originals` in `lib/data.js`.
+4. **Sell an original** → post it from the SHOP tab (1/1 ÒRÌGÌNAL), or add
+   it under `originals` in `lib/data.js`.
 
 ## Stack
 

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { products, originals } from "../../../lib/data";
 import { saveOrder, updateOrder, computeTotal, newRef } from "../../../lib/orderStore";
+import { readCatalog } from "../../../lib/catalogStore";
 
 // ------------------------------------------------------------
 //  POST /api/checkout
@@ -24,7 +25,13 @@ export async function POST(req) {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(buyer.email))
       return NextResponse.json({ error: "That email looks misspelled — even for us." }, { status: 400 });
 
-    const { lines, total } = computeTotal([...products, ...originals], items);
+    // art Tersoo posts from /admin rides in the ledger — the re-pricer
+    // trusts it exactly like the curated catalog
+    const cat = await readCatalog();
+    const { lines, total } = computeTotal(
+      [...products, ...originals, ...(cat.products || []), ...(cat.originals || [])],
+      items
+    );
     const ref = newRef();
 
     await saveOrder({

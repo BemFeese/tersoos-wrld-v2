@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import { readOrders, readCommissions, readSubscribers } from "../../../lib/orderStore";
+import { readCatalog } from "../../../lib/catalogStore";
 
 // ------------------------------------------------------------
 //  GET /api/admin?key=ADMIN_KEY
-//  The artist's back office: orders, commissions, subscribers.
-//  Set ADMIN_KEY in .env.local. Anything else → 401.
+//  The artist's back office: his postings catalog, customer
+//  orders, commissions, subscribers. Set ADMIN_KEY in
+//  .env.local. Anything else → 401.
 // ------------------------------------------------------------
 
 export async function GET(req) {
@@ -21,11 +23,12 @@ export async function GET(req) {
     return NextResponse.json({ error: "Wrong key." }, { status: 401 });
   }
 
-  const [orders, commissions, subscribers] = await Promise.all([
+  const [orders, commissions, subscribers, catalog] = await Promise.all([
     readOrders(),
     readCommissions(),
     readSubscribers(),
+    readCatalog(),
   ]);
 
-  return NextResponse.json({ ok: true, orders, commissions, subscribers });
+  return NextResponse.json({ ok: true, orders, commissions, subscribers, catalog });
 }

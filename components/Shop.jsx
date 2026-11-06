@@ -1,6 +1,7 @@
 "use client";
 
 import { products, originals } from "../lib/data";
+import useCatalog from "../lib/use-catalog";
 import ArtSmart from "./ArtSmart";
 import Reveal from "./Reveal";
 import { useCart, naira } from "../lib/cart-store";
@@ -81,11 +82,15 @@ function OriginalCard({ p }) {
 
 export default function Shop({ compact = false }) {
   const [col, setCol] = useState("ALL");
-  const shown = (col === "ALL" ? products : products.filter((p) => p.collection === col)).slice(
+  const cat = useCatalog();
+  // his latest posting leads the shelf, then the curated pieces
+  const shelf = [...(cat?.products || []), ...products];
+  const gallery1of1 = [...(cat?.originals || []), ...originals];
+  const shown = (col === "ALL" ? shelf : shelf.filter((p) => p.collection === col)).slice(
     0,
     compact && col === "ALL" ? 4 : undefined
   );
-  const available = originals.filter((p) => p.stock > 0);
+  const available = gallery1of1.filter((p) => p.stock > 0);
 
   return (
     <section className="section" id="shop">
@@ -120,7 +125,7 @@ export default function Shop({ compact = false }) {
           {compact && available.length > 0 && <a className="see" href="/shop">1/1 GALLERY →</a>}
         </div>
         <div className="oo-grid">
-          {(compact ? available.slice(0, 1) : originals).map((p) => <OriginalCard key={p.id} p={p} />)}
+          {(compact ? available.slice(0, 1) : gallery1of1).map((p) => <OriginalCard key={p.id} p={p} />)}
         </div>
         {!compact && (
           <p className="oo-note">

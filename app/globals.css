@@ -466,3 +466,51 @@ img { display: block; }
 .admin-lines li { padding: .15rem 0; border-bottom: 1px dashed var(--line); }
 .admin-brief { color: var(--ink-soft); font-size: .88rem; line-height: 1.6; margin-top: .4rem; }
 .admin-empty { color: var(--ink-soft); font-family: var(--font-hand); font-size: 1.25rem; }
+/* ---------- self-serve posting (art tab + shop tab) ---------- */
+.admin-form {
+  display: grid; gap: .9rem; max-width: 860px; margin-bottom: 1.8rem;
+  border: 1px solid var(--line); border-radius: 14px; padding: 1.2rem;
+  background: var(--paper-2);
+}
+.admin-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.admin-field { display: flex; flex-direction: column; gap: .4rem; }
+.admin-field > span.lbl { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.admin-field > span.lbl em { font-style: normal; color: var(--ink-soft); opacity: .7; }
+.admin-form input, .admin-form textarea, .admin-form select {
+  background: var(--paper); border: 1px solid var(--line); color: var(--ink);
+  font-family: inherit; font-size: .9rem; border-radius: 12px; padding: .7em 1em; width: 100%;
+}
+.admin-form input:focus, .admin-form textarea:focus, .admin-form select:focus {
+  outline: none; border-color: var(--ox); background: var(--paper);
+}
+.admin-form textarea { min-height: 110px; resize: vertical; }
+.admin-form .admin-btn { justify-self: start; }
+.admin-file {
+  border: 1px dashed var(--line); border-radius: 14px; padding: 1.2rem; display: block;
+  color: var(--ink-soft); font-size: .8rem; text-align: center; cursor: pointer;
+  transition: all .2s;
+}
+.admin-file:hover { border-color: var(--ox); color: var(--ox); }
+.admin-file input { display: none; }
+.admin-preview {
+  max-width: 280px; max-height: 200px; object-fit: contain; border-radius: 10px;
+  display: block; margin: .6rem auto 0;
+}
+.admin-ok { color: var(--ox); font-size: .8rem; letter-spacing: .04em; }
+.admin-thumb { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; flex: none; }
+.admin-del {
+  border: 1px solid var(--line); background: transparent; color: var(--ink-soft);
+  border-radius: 999px; font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+  padding: .5em 1.2em; flex: none; transition: all .2s;
+}
+.admin-del:hover { border-color: var(--ox); color: var(--ox); }
+.admin-seg { display: flex; gap: .4rem; flex-wrap: wrap; }
+.admin-seg button {
+  border: 1px solid var(--line); background: transparent; color: var(--ink-soft);
+  border-radius: 999px; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: .5em 1.1em; transition: all .2s;
+}
+.admin-seg button.on { background: var(--ox); border-color: var(--ox); color: var(--paper); }
+@media (max-width: 640px) {
+  .admin-form .row2 { grid-template-columns: 1fr; }
+}
